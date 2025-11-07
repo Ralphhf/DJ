@@ -13,19 +13,42 @@
   <!-- Floating Particles -->
   <div class="particles" id="particles" aria-hidden="true"></div>
 
-  <!-- Navigation -->
-  <nav id="navbar" role="navigation">
-    <div class="nav-container">
-      <a class="logo" href="#home">MAX VOLTAGE</a>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#music">Music</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+<!-- Navigation -->
+<nav id="navbar" role="navigation">
+  <div class="nav-container">
+    <a class="logo" href="#home">MAX VOLTAGE</a>
+
+    <!-- Desktop links -->
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- Mobile toggle button (shown on phones) -->
+    <button
+      class="nav-toggle"
+      aria-label="Open menu"
+      aria-controls="mobileMenu"
+      aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile slide-down menu -->
+  <div id="mobileMenu" class="mobile-menu" hidden>
+    <a href="#home"   class="mobile-link">Home</a>
+    <a href="#about"  class="mobile-link">About</a>
+    <a href="#music"  class="mobile-link">Music</a>
+    <a href="#events" class="mobile-link">Events</a>
+    <a href="#contact"class="mobile-link">Contact</a>
+  </div>
+</nav>
+
 
   <!-- Hero Section -->
   <section id="home" class="hero" aria-label="Hero">
@@ -204,3 +227,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
