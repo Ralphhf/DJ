@@ -34,7 +34,6 @@ body {
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
 }
-
 @keyframes gradientShift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -43,8 +42,7 @@ body {
 /* Navigation */
 nav {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   /* Add safe-area space on iPhones with a notch */
   padding: calc(16px + env(safe-area-inset-top)) 50px 16px;
@@ -53,12 +51,10 @@ nav {
   z-index: 1000;
   transition: padding 0.3s ease, background 0.3s ease;
 }
-
 nav.scrolled {
   padding: calc(12px + env(safe-area-inset-top)) 50px 12px;
   background: rgba(5, 5, 5, 0.95);
 }
-
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -66,7 +62,6 @@ nav.scrolled {
   max-width: 1400px;
   margin: 0 auto;
 }
-
 .logo {
   font-size: 24px;
   font-weight: bold;
@@ -76,18 +71,15 @@ nav.scrolled {
   animation: pulse 2s ease infinite;
   text-decoration: none;
 }
-
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.8; }
 }
-
 .nav-links {
   display: flex;
   gap: 30px;
   list-style: none;
 }
-
 .nav-links a {
   color: var(--light);
   text-decoration: none;
@@ -95,7 +87,6 @@ nav.scrolled {
   position: relative;
   padding: 5px 0;
 }
-
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -109,28 +100,25 @@ nav.scrolled {
 /* Hero Section */
 /* Use 100svh to fix iOS Safari's 100vh issue with the URL bar */
 .hero {
-  min-height: 100svh;     /* modern iOS */
-  min-height: 100vh;      /* fallback */
+  min-height: 100svh;      /* modern iOS */
+  min-height: 100vh;       /* fallback */
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
   /* Prevent content hiding behind fixed nav when landing at top */
-  padding-top: var(--nav-height);
+  padding-top: calc(var(--nav-height) + env(safe-area-inset-top));
 }
-
 .hero-content {
   text-align: center;
   z-index: 2;
   animation: fadeInUp 1s ease;
 }
-
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 .hero-image {
   width: 250px; height: 250px;
   border-radius: 50%;
@@ -140,12 +128,10 @@ nav.scrolled {
   animation: rotate 20s linear infinite;
   position: relative;
 }
-
 @keyframes rotate {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
-
 .hero-image img {
   width: 100%; height: 100%;
   border-radius: 50%;
@@ -155,7 +141,6 @@ nav.scrolled {
   align-items: center; justify-content: center;
   font-size: 48px; color: var(--primary);
 }
-
 h1 {
   font-size: 72px;
   margin-bottom: 20px;
@@ -163,26 +148,22 @@ h1 {
   letter-spacing: 5px;
   animation: glow 2s ease-in-out infinite alternate;
 }
-
 @keyframes glow {
   from { text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary); }
   to   { text-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary), 0 0 40px var(--secondary); }
 }
-
 .tagline {
   font-size: 24px;
   color: var(--gray);
   margin-bottom: 40px;
   letter-spacing: 2px;
 }
-
 .cta-buttons {
   display: flex;
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
 }
-
 .btn {
   padding: 15px 40px;
   font-size: 16px;
@@ -197,19 +178,16 @@ h1 {
   overflow: hidden;
   will-change: transform;
 }
-
 .btn-primary {
   background: linear-gradient(45deg, var(--primary), var(--secondary));
   color: var(--dark);
   font-weight: bold;
 }
-
 .btn-secondary {
   background: transparent;
   color: var(--light);
   border: 2px solid var(--primary);
 }
-
 .btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
@@ -223,7 +201,6 @@ section {
   /* Fix anchor scroll under fixed nav (works with JS smooth scroll) */
   scroll-margin-top: calc(var(--nav-height) + env(safe-area-inset-top));
 }
-
 h2 {
   font-size: 48px;
   text-align: center;
@@ -242,19 +219,16 @@ h2 {
   gap: 60px;
   align-items: center;
 }
-
 .about-text {
   font-size: 18px;
   line-height: 1.8;
   color: #cccccc;
 }
-
 .stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 }
-
 .stat-card {
   background: rgba(255, 255, 255, 0.05);
   padding: 30px;
@@ -264,13 +238,11 @@ h2 {
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   will-change: transform;
 }
-
 .stat-card:hover {
   transform: translateY(-5px);
   background: rgba(0, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
 }
-
 .stat-number {
   font-size: 36px;
   font-weight: bold;
@@ -284,7 +256,6 @@ h2 {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
 }
-
 .track-card {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
@@ -293,12 +264,10 @@ h2 {
   border: 1px solid rgba(0, 255, 255, 0.2);
   will-change: transform;
 }
-
 .track-card:hover {
   transform: scale(1.03);
   box-shadow: 0 15px 40px rgba(0, 255, 255, 0.3);
 }
-
 .track-image {
   width: 100%;
   height: 220px;
@@ -309,15 +278,12 @@ h2 {
   font-size: 60px;
   color: rgba(255, 255, 255, 0.3);
 }
-
 .track-info { padding: 20px; }
-
 .track-title {
   font-size: 20px;
   margin-bottom: 10px;
   color: var(--primary);
 }
-
 .track-genre {
   color: var(--gray);
   font-size: 14px;
@@ -331,7 +297,6 @@ h2 {
   flex-direction: column;
   gap: 20px;
 }
-
 .event-card {
   background: rgba(255, 255, 255, 0.05);
   padding: 30px;
@@ -344,39 +309,31 @@ h2 {
   transition: transform 0.3s ease, background 0.3s ease;
   will-change: transform;
 }
-
 .event-card:hover {
   background: rgba(255, 0, 255, 0.1);
   transform: translateX(10px);
 }
-
 .event-date { text-align: center; }
-
 .event-day {
   font-size: 36px;
   font-weight: bold;
   color: var(--secondary);
 }
-
 .event-month {
   font-size: 14px;
   text-transform: uppercase;
   color: var(--gray);
 }
-
 .event-details h3 {
   font-size: 24px;
   margin-bottom: 10px;
   color: var(--light);
 }
-
 .event-venue { color: var(--gray); margin-bottom: 5px; }
-
 .event-time {
   color: var(--primary);
   font-size: 14px;
 }
-
 .btn-ticket {
   padding: 10px 30px;
   background: var(--secondary);
@@ -402,20 +359,17 @@ h2 {
   max-width: 800px;
   margin: 0 auto;
 }
-
 .contact-info {
   margin-bottom: 40px;
   font-size: 18px;
   color: var(--gray);
 }
-
 .social-links {
   display: flex;
   justify-content: center;
   gap: 30px;
   margin-top: 40px;
 }
-
 .social-link {
   width: 60px; height: 60px;
   border-radius: 50%;
@@ -428,7 +382,6 @@ h2 {
   border: 2px solid var(--primary);
   will-change: transform;
 }
-
 .social-link:hover {
   background: var(--primary);
   color: var(--dark);
@@ -444,7 +397,6 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Responsive */
 /* --- Mobile menu (hamburger) --- */
 .nav-toggle {
   display: none;            /* shown in mobile via media query */
@@ -456,11 +408,9 @@ footer {
   cursor: pointer;
   margin-left: 12px;
 }
-
 .nav-toggle .bar {
   position: absolute;
-  left: 8px;
-  right: 8px;
+  left: 8px; right: 8px;
   height: 2px;
   background: var(--light);
   transition: transform 0.25s ease, opacity 0.2s ease;
@@ -468,7 +418,6 @@ footer {
 .nav-toggle .bar:nth-child(1) { top: 11px; }
 .nav-toggle .bar:nth-child(2) { top: 17px; }
 .nav-toggle .bar:nth-child(3) { top: 23px; }
-
 .nav-toggle.is-open .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .nav-toggle.is-open .bar:nth-child(2) { opacity: 0; }
 .nav-toggle.is-open .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
@@ -476,9 +425,8 @@ footer {
 /* Slide-down panel under the fixed navbar */
 .mobile-menu {
   position: fixed;
-  top: calc(var(--nav-height) + env(safe-area-inset-top));
-  left: 0;
-  right: 0;
+  top: calc(var(--nav-height, 72px) + env(safe-area-inset-top));
+  left: 0; right: 0;
   background: rgba(10,10,10,0.98);
   backdrop-filter: blur(10px);
   display: flex;
@@ -493,13 +441,11 @@ footer {
   pointer-events: none;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
-
 .mobile-menu.is-open {
   opacity: 1;
   transform: scaleY(1);
   pointer-events: auto;
 }
-
 .mobile-link {
   display: block;
   padding: 14px 8px;
@@ -517,14 +463,11 @@ footer {
 /* Lock body scroll when menu open */
 body.menu-open { overflow: hidden; }
 
-/* Show hamburger, hide desktop links on mobile */
+/* Responsive */
 @media (max-width: 768px) {
+  /* Hide desktop links, show hamburger */
   .nav-links { display: none; }
   .nav-toggle { display: inline-block; }
-}
-
-
-  .nav-links { display: none; }
 
   h1 { font-size: 48px; }
   .tagline { font-size: 18px; }
@@ -538,13 +481,18 @@ body.menu-open { overflow: hidden; }
     text-align: center;
     gap: 20px;
   }
+
   /* Slightly smaller hero image on small screens */
   .hero-image { width: 220px; height: 220px; }
 }
 
 /* Respect reduced motion settings */
 @media (prefers-reduced-motion: reduce) {
-  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
 
 /* Floating particles effect */
@@ -554,7 +502,6 @@ body.menu-open { overflow: hidden; }
   pointer-events: none;
   z-index: 1;
 }
-
 .particle {
   position: absolute;
   width: 4px; height: 4px;
@@ -563,7 +510,6 @@ body.menu-open { overflow: hidden; }
   animation: float 20s infinite linear;
   opacity: 0.3;
 }
-
 @keyframes float {
   from { transform: translateY(100vh) translateX(0); }
   to   { transform: translateY(-100px) translateX(100px); }
@@ -573,4 +519,3 @@ body.menu-open { overflow: hidden; }
 @media (hover: hover) {
   .track-card:hover { transform: scale(1.05); }
 }
-
