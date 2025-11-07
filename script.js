@@ -76,3 +76,54 @@ if ('IntersectionObserver' in window) {
   // Fallback: reveal immediately
   document.querySelectorAll('.track-card, .event-card, .stat-card').forEach(reveal);
 }
+
+// --- Mobile menu toggle ---
+(function () {
+  const toggle = document.querySelector('.nav-toggle');
+  const panel  = document.getElementById('mobileMenu');
+
+  if (!toggle || !panel) return;
+
+  function openMenu() {
+    panel.hidden = false;
+    // force reflow to enable transition when unhiding
+    // eslint-disable-next-line no-unused-expressions
+    panel.offsetHeight;
+    panel.classList.add('is-open');
+    toggle.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('menu-open');
+  }
+
+  function closeMenu() {
+    panel.classList.remove('is-open');
+    toggle.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+    // after transition, hide for a11y + pointer events
+    panel.addEventListener('transitionend', function handler() {
+      if (!panel.classList.contains('is-open')) panel.hidden = true;
+      panel.removeEventListener('transitionend', handler);
+    });
+  }
+
+  toggle.addEventListener('click', () => {
+    const open = toggle.classList.contains('is-open');
+    open ? closeMenu() : openMenu();
+  });
+
+  // Close when a mobile link is tapped (and smooth-scroll still works)
+  panel.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', () => closeMenu());
+  });
+
+  // Close on Escape
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && toggle.classList.contains('is-open')) closeMenu();
+  });
+
+  // Close if window resized up to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && toggle.classList.contains('is-open')) closeMenu();
+  });
+})();
