@@ -119,15 +119,19 @@ nav.scrolled {
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
 .hero-image {
-  width: 250px; height: 250px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   margin: 0 auto 30px;
-  background: linear-gradient(45deg, var(--primary), var(--secondary));
-  padding: 5px;
-  animation: rotate 20s linear infinite;
   position: relative;
+  background: #1a1a1a;   /* inner circle */
+  padding: 0;            /* ring handled by ::before now */
+  overflow: visible;
+  isolation: isolate;
 }
+
 @keyframes rotate {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
@@ -486,6 +490,36 @@ body.menu-open { overflow: hidden; }
   .hero-image { width: 220px; height: 220px; }
 }
 
+/* Spinning gradient ring drawn via pseudo-element (iPhone-safe) */
+.hero-image::before {
+  content: "";
+  position: absolute;
+  inset: -6px; /* ring thickness; increase magnitude for thicker ring */
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--primary));
+  /* Cut out the center so only the ring shows */
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 6px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 6px));
+  animation: spin 12s linear infinite;
+  filter: drop-shadow(0 0 16px rgba(0, 255, 255, 0.25));
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  z-index: 0;
+}
+
+/* Keep MV letters or image above the ring */
+.hero-image > * { position: relative; z-index: 1; }
+
+/* New keyframes (you can remove the old @keyframes rotate if unused) */
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Match your mobile sizing */
+@media (max-width: 768px) {
+  .hero-image { width: 220px; height: 220px; }
+  .hero-image::before { inset: -6px; }
+}
+
 /* Respect reduced motion settings */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -519,3 +553,4 @@ body.menu-open { overflow: hidden; }
 @media (hover: hover) {
   .track-card:hover { transform: scale(1.05); }
 }
+
