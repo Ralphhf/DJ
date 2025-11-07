@@ -109,12 +109,14 @@ nav.scrolled {
 /* Hero Section */
 .hero {
     height: 100vh;
+    padding-top: 120px; /* ADD THIS LINE */
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
 }
+
 
 .hero-content {
     text-align: center;
@@ -536,6 +538,7 @@ footer {
         transform: translateY(-100px) translateX(100px);
     }
 }
+
 
 
 
