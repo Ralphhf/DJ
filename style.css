@@ -477,13 +477,8 @@ footer {
 }
 
 .menu-toggle {
-    font-size: 30px;
-    cursor: pointer;
-    color: var(--primary);
     display: block;
-    user-select: none;
 }
-
 
     h1 {
         font-size: 48px;
@@ -540,3 +535,4 @@ footer {
 .menu-toggle {
     display: none;
 }
+
