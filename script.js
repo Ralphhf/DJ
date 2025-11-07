@@ -67,3 +67,10 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.track-card, .event-card, .stat-card').forEach(el => {
     observer.observe(el);
 });
+
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+});
