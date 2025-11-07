@@ -118,6 +118,7 @@ nav.scrolled {
 }
 
 
+
 .hero-content {
     text-align: center;
     z-index: 2;
@@ -459,11 +460,17 @@ footer {
     cursor: pointer;
     color: var(--primary);
 }
+
+.nav-spacer { height: 90px; }
+
 /* Responsive */
 @media (max-width: 768px) {
     nav {
         padding: 15px 20px;
     }
+
+    .nav-spacer { height: 70px; }
+
 
   .nav-links {
     position: absolute;
@@ -538,6 +545,7 @@ footer {
         transform: translateY(-100px) translateX(100px);
     }
 }
+
 
 
 
